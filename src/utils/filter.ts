@@ -1,0 +1,58 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/**
+ * Returns if scalar type.
+ *
+ * @param obj
+ * @returns {boolean}
+ */
+const isScalarType = (obj: any) => (
+  typeof obj !== 'object'
+    || obj instanceof String
+    || obj instanceof Number
+    || obj instanceof Boolean
+    || obj === null
+);
+
+/**
+ * Changes empty value to null.
+ *
+ * @param value
+ * @returns {*}
+ */
+const nullIfEmpty = (value: any) => {
+  if (typeof value !== 'string') {
+    return value;
+  }
+
+  return value.trim() === '' ? null : value;
+};
+
+/**
+ * Converts empty value to null.
+ *
+ * @param obj
+ * @returns {*}
+ */
+export const emptyToNull = (obj: any): any => {
+  if (isScalarType(obj)) {
+    return obj;
+  }
+
+  if (Array.isArray(obj)) {
+    return obj.map(emptyToNull);
+  }
+
+  const result: any = {};
+
+  for (const key of Object.keys(obj)) {
+    const value = obj[key];
+
+    if (typeof value === 'object') {
+      result[key] = emptyToNull(value);
+    } else {
+      result[key] = nullIfEmpty(value);
+    }
+  }
+
+  return result;
+};

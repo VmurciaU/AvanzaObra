@@ -1,0 +1,6 @@
+{
+  "watch": ["src/**/*.ts", ".env"],
+  "ext": "ts,js,.env",
+  "verbose": false,
+  "exec": "node -r ts-node -r ts-node/register"
+}

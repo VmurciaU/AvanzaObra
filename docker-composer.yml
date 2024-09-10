@@ -1,0 +1,24 @@
+services:
+  backend:
+    container_name: deviceapp_backend
+    image: deviceapp_backend:${APP_VERSION}
+    build:
+      context: ./
+      dockerfile: Dockerfile.backend.prd
+    restart: always
+    ports:
+      - "${BACKEND_PORT}:${BACKEND_PORT}"
+    environment:
+      - BACKEND_PORT=${BACKEND_PORT}
+    volumes:
+      - ./volumes/logs_backend:/app/logs
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    networks:
+      - serverapp_net
+    deploy:
+      replicas: 1
+
+networks:
+  serverapp_net:
+    external: true
