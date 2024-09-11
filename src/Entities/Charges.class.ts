@@ -3,9 +3,9 @@ import {
   Entity,
   Column,
   CreateDateColumn,
-  ManyToOne,
   JoinColumn,
   PrimaryGeneratedColumn,
+  OneToMany,
 } from 'typeorm';
 
 // importaciones de identidades
@@ -41,6 +41,6 @@ export class Charges {
 
   // relación de muchos a uno con la tabla usuarios
   @JoinColumn({ name: 'id', referencedColumnName: 'idCharges' })
-  @ManyToOne(() => Users, (user) => user.charges)
-    user: Users;
+  @OneToMany(() => Users, (user) => user.charges)
+    user: Users[];
 }

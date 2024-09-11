@@ -6,7 +6,6 @@ import {
   Index,
   JoinColumn,
   ManyToOne,
-  OneToMany,
 } from 'typeorm';
 
 // import types
@@ -62,16 +61,16 @@ export class Tasks {
 
   // Relación con la entidad Users
   @JoinColumn({ name: 'idUser', referencedColumnName: 'id' })
-  @OneToMany(() => Users, (user) => user.tasks)
-    tasks: Users[];
+  @ManyToOne(() => Users, (user) => user.tasks)
+    tasks: Users;
 
   // Relación con la entidad States
-  @ManyToOne(() => States, (state) => state.tasks)
   @JoinColumn({ name: 'idState', referencedColumnName: 'id' })
+  @ManyToOne(() => States, (state) => state.tasks)
     states: States;
 
   // Relación con la entidad Projects
-  @ManyToOne(() => Projects, (project) => project.tasks)
   @JoinColumn({ name: 'idProject', referencedColumnName: 'id' })
+  @ManyToOne(() => Projects, (project) => project.tasks)
     projects: Projects;
 }

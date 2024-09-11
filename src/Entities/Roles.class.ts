@@ -3,9 +3,9 @@ import {
   Entity,
   Column,
   CreateDateColumn,
-  ManyToOne,
   JoinColumn,
   PrimaryGeneratedColumn,
+  OneToMany,
 } from 'typeorm';
 
 // importaciones de identidades
@@ -38,6 +38,6 @@ export class Roles {
 
   // relación de muchos a uno con la tabla usuarios
   @JoinColumn({ name: 'id', referencedColumnName: 'idRole' })
-  @ManyToOne(() => Users, (user) => user.role)
-    user: Users;
+  @OneToMany(() => Users, (user) => user.role)
+    user: Users[];
 }

@@ -3,12 +3,12 @@ import {
   Entity,
   Column,
   PrimaryColumn,
-  OneToMany,
   Index,
   CreateDateColumn,
   JoinColumn,
   PrimaryGeneratedColumn,
   ManyToOne,
+  OneToMany,
 } from 'typeorm';
 
 // importaciones de identidades
@@ -72,15 +72,15 @@ export class Users {
 
   // Relación de uno a muchos con la roles
   @JoinColumn({ name: 'idRole', referencedColumnName: 'id' })
-  @OneToMany(() => Roles, (role) => role.user)
-    role: Roles[];
+  @ManyToOne(() => Roles, (role) => role.user)
+    role: Roles;
 
   @JoinColumn({ name: 'idCharges', referencedColumnName: 'id' })
-  @OneToMany(() => Charges, (charges) => charges.user)
-    charges: Charges[];
+  @ManyToOne(() => Charges, (charges) => charges.user)
+    charges: Charges;
 
   // relación de muchos a uno con la tabla usuarios
   @JoinColumn({ name: 'id', referencedColumnName: 'idUser' })
-  @ManyToOne(() => Tasks, (tasks) => tasks.tasks)
-    tasks: Tasks;
+  @OneToMany(() => Tasks, (tasks) => tasks.tasks)
+    tasks: Tasks[];
 }
