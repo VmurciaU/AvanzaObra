@@ -81,6 +81,6 @@ export class Users {
 
   // relación de muchos a uno con la tabla usuarios
   @JoinColumn({ name: 'id', referencedColumnName: 'idUser' })
-  @OneToMany(() => Tasks, (tasks) => tasks.tasks)
+  @OneToMany(() => Tasks, (tasks) => tasks.user)
     tasks: Tasks[];
 }

@@ -6,6 +6,7 @@ import {
   Index,
   JoinColumn,
   ManyToOne,
+  PrimaryColumn,
 } from 'typeorm';
 
 // import types
@@ -24,14 +25,17 @@ export class Tasks {
     id: number;
 
   @Column()
+  @PrimaryColumn({ name: 'idUser', type: 'int', nullable: false })
   @Index()
     idUser: number;
 
   @Column()
+  @PrimaryColumn({ name: 'idProject', type: 'int', nullable: false })
   @Index()
     idProject: number;
 
   @Column()
+  @PrimaryColumn({ name: 'idState', type: 'int', nullable: false })
   @Index()
     idState: number;
 
@@ -47,11 +51,8 @@ export class Tasks {
   @Column({ length: 255 })
     image: string;
 
-  @Column()
-    stateTasks: number;
-
-  @Column()
-    user: number;
+  @Column({ default: 1 })
+    state: number;
 
   @CreateDateColumn()
     createdAt: Date;
@@ -62,7 +63,7 @@ export class Tasks {
   // Relación con la entidad Users
   @JoinColumn({ name: 'idUser', referencedColumnName: 'id' })
   @ManyToOne(() => Users, (user) => user.tasks)
-    tasks: Users;
+    user: Users;
 
   // Relación con la entidad States
   @JoinColumn({ name: 'idState', referencedColumnName: 'id' })
