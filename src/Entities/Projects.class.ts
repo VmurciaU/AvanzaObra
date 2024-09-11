@@ -26,8 +26,6 @@ export class Projects {
       id: number;
 
     @Column()
-    @PrimaryColumn({ name: 'idClient', type: 'int', nullable: false })
-    @Index()
       idClient: number;
 
     @Column({

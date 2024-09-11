@@ -54,14 +54,10 @@ export class Users {
     @Column({ default: 1 })
       state: number;
 
-    @Column()
-    @PrimaryColumn({ name: 'idRole', type: 'int', nullable: false })
-    @Index()
+    @Column()   
       idRole: number;
 
-    @Column()
-    @PrimaryColumn({ name: 'idCharges', type: 'int', nullable: false })
-    @Index()
+    @Column()    
       idCharges: number;
 
     @CreateDateColumn()

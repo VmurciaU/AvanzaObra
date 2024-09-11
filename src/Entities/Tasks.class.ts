@@ -25,18 +25,12 @@ export class Tasks {
     id: number;
 
   @Column()
-  @PrimaryColumn({ name: 'idUser', type: 'int', nullable: false })
-  @Index()
     idUser: number;
 
   @Column()
-  @PrimaryColumn({ name: 'idProject', type: 'int', nullable: false })
-  @Index()
     idProject: number;
 
   @Column()
-  @PrimaryColumn({ name: 'idState', type: 'int', nullable: false })
-  @Index()
     idState: number;
 
   @Column({
