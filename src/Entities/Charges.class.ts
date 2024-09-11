@@ -1,0 +1,46 @@
+// importaciones de módulos de la librerías
+import {
+  Entity,
+  Column,
+  CreateDateColumn,
+  ManyToOne,
+  JoinColumn,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+
+// importaciones de identidades
+import { Users } from './Users.class';
+
+@Entity('charges', {
+  orderBy: {
+    id: 'ASC',
+  },
+})
+
+export class Charges {
+  @PrimaryGeneratedColumn({ type: 'int' })
+    id: number;
+
+  @Column({ unique: true })
+    name: string;
+
+  @Column({ length: 255 })
+    description: string;
+
+  @Column({ default: 1 })
+    state: number;
+
+  @CreateDateColumn()
+    createdAt: Date;
+
+  @CreateDateColumn()
+    updatedAt: Date;
+
+  @CreateDateColumn()
+    createdBy: number;
+
+  // relación de muchos a uno con la tabla usuarios
+  @JoinColumn({ name: 'id', referencedColumnName: 'idCharges' })
+  @ManyToOne(() => Users, (user) => user.charges)
+    user: Users;
+}

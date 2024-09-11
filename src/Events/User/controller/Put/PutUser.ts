@@ -12,7 +12,7 @@ import { success } from '../../../..//utils/response';
 
 // import Entities
 import { getDataSource } from '../../../../db/dbconfig/typeormdb';
-import { User } from '../../../../Entities/User.class';
+import { Users } from '../../../../Entities/Users.class';
 
 /**
  * Crea el hash del password
@@ -64,7 +64,7 @@ export const UpdateUser = async (req: Request, res: Response, next: NextFunction
 
     // const userData = User.getRepository(cBody);
     const dataSource = await getDataSource();
-    const userRepository = dataSource.getRepository(User);
+    const userRepository = dataSource.getRepository(Users);
     const userData = await userRepository.createQueryBuilder().update(cBody).where(
       {
         id,

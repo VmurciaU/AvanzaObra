@@ -3,21 +3,21 @@ import {
   Entity,
   Column,
   CreateDateColumn,
-  // ManyToOne,
-  // JoinColumn,
+  JoinColumn,
   PrimaryGeneratedColumn,
+  OneToMany,
 } from 'typeorm';
 
 // importaciones de identidades
-// import { User } from './User.class';
+import { Tasks } from './Tasks.class';
 
-@Entity('roles', {
+@Entity('states', {
   orderBy: {
     id: 'ASC',
   },
 })
 
-export class Role {
+export class States {
   @PrimaryGeneratedColumn({ type: 'int' })
     id: number;
 
@@ -36,8 +36,7 @@ export class Role {
   @CreateDateColumn()
     createdBy: number;
 
-  // relación de muchos a uno con la tabla usuarios
-  // @JoinColumn({ name: 'id', referencedColumnName: 'idRole' })
-  // @ManyToOne(() => User, (user) => user.role)
-  //   user: User;
+  @JoinColumn({ name: 'id', referencedColumnName: 'idState' })
+  @OneToMany(() => Tasks, (tasks) => tasks.states)
+    tasks: Tasks[];
 }

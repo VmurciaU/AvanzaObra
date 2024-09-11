@@ -9,7 +9,7 @@ import bcrypt from 'bcryptjs';
 import { getDataSource } from '../db/dbconfig/typeormdb';
 
 // entidades
-import { User } from '../Entities/User.class';
+import { Users } from '../Entities/Users.class';
 
 dotenv.config();
 
@@ -23,12 +23,12 @@ passport.use(
     async (username, password, done) => {
       try {
         const dataSource = await getDataSource();
-        const userRepository = dataSource.getRepository(User);
+        const userRepository = dataSource.getRepository(Users);
         const searchUser = await userRepository.findOne(
           {
             relations: ['role'],
             where: {
-              user: username,
+              email: username,
             },
           },
         );
@@ -64,8 +64,8 @@ passport.use(
     async (jwtPayload, done) => {
       try {
         const dataSource = await getDataSource();
-        const userRepository = dataSource.getRepository(User);
-        const searchUser = await userRepository.findOneBy({ user: jwtPayload.user });
+        const userRepository = dataSource.getRepository(Users);
+        const searchUser = await userRepository.findOneBy({ email: jwtPayload.user });
         if (searchUser) {
           done(null, searchUser);
         } else {

@@ -3,22 +3,25 @@ import {
   Entity,
   Column,
   PrimaryColumn,
-  // OneToMany,
+  OneToMany,
   Index,
   CreateDateColumn,
-  // JoinColumn,
+  JoinColumn,
   PrimaryGeneratedColumn,
+  ManyToOne,
 } from 'typeorm';
 
 // importaciones de identidades
-// import { Role } from './Role.class';
+import { Roles } from './Roles.class';
+import { Charges } from './Charges.class';
+import { Tasks } from './Tasks.class';
 
 @Entity('users', {
   orderBy: {
     id: 'ASC',
   },
 })
-export class User {
+export class Users {
     // columna para identificación única
     @PrimaryGeneratedColumn({ type: 'int' })
       id: number;
@@ -47,7 +50,6 @@ export class User {
       length: 15,
     })
       phoneNumber: string;
-    //TODO: Revisar si es necesario la relaciones con cargos
 
     @Column({ default: 1 })
       state: number;
@@ -57,14 +59,28 @@ export class User {
     @Index()
       idRole: number;
 
+    @Column()
+    @PrimaryColumn({ name: 'idCharges', type: 'int', nullable: false })
+    @Index()
+      idCharges: number;
+
     @CreateDateColumn()
       createdAt: Date;
 
     @CreateDateColumn()
       updatedAt: Date;
 
-  // // Relación de uno a muchos con la roles
-  // @JoinColumn({ name: 'idRole', referencedColumnName: 'id' })
-  // @OneToMany(() => Role, (rol) => rol.user)
-  //   role: Role[];
+  // Relación de uno a muchos con la roles
+  @JoinColumn({ name: 'idRole', referencedColumnName: 'id' })
+  @OneToMany(() => Roles, (role) => role.user)
+    role: Roles[];
+
+  @JoinColumn({ name: 'idCharges', referencedColumnName: 'id' })
+  @OneToMany(() => Charges, (charges) => charges.user)
+    charges: Charges[];
+
+  // relación de muchos a uno con la tabla usuarios
+  @JoinColumn({ name: 'id', referencedColumnName: 'idUser' })
+  @ManyToOne(() => Tasks, (tasks) => tasks.tasks)
+    tasks: Tasks;
 }

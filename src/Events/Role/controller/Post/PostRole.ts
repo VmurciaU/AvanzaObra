@@ -11,7 +11,7 @@ import { getDataSource } from '../../../../db/dbconfig/typeormdb';
 import { success } from '../../../../utils/response';
 
 // import Entities
-import { Role } from '../../../../Entities/Role.class';
+import { Roles } from '../../../../Entities/Roles.class';
 
 /**
    * Obtiene (POST) la información de la API
@@ -40,7 +40,7 @@ export const SaveRole = async (req: Request, res: Response, next: NextFunction) 
 
     // const userData = Role.getRepository(cBody);
     const dataSource = await getDataSource();
-    const roleRepository = dataSource.getRepository(Role);
+    const roleRepository = dataSource.getRepository(Roles);
     const roleData = await roleRepository.save(cBody);
 
     const result = success(
@@ -85,7 +85,7 @@ export const SaveRoleWithoutToken = async (req: Request, res: Response, next: Ne
 
     // const roleData = Role.getRepository(cBody);
     const dataSource = await getDataSource();
-    const roleRepository = dataSource.getRepository(Role);
+    const roleRepository = dataSource.getRepository(Roles);
     const roleData = await roleRepository.save(cBody);
 
     const result = success(
