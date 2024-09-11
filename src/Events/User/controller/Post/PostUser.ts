@@ -12,7 +12,7 @@ import { currentDate } from '../../../../utils/currentDate';
 
 // import Entities
 import { getDataSource } from '../../../../db/dbconfig/typeormdb';
-import { User } from '../../../../Entities/User.class';
+import { Users } from '../../../../Entities/Users.class';
 
 /**
  * Crea el hash del password
@@ -60,7 +60,7 @@ export const SaveUser = async (req: Request, res: Response, next: NextFunction) 
 
     // const userData = User.getRepository(cBody);
     const dataSource = await getDataSource();
-    const userRepository = dataSource.getRepository(User);
+    const userRepository = dataSource.getRepository(Users);
     const userData = await userRepository.save(cBody);
 
     const result = success(
@@ -109,7 +109,7 @@ export const SaveUserWithoutToken = async (req: Request, res: Response, next: Ne
     cBody.updatedAt = date;
 
     const dataSource = await getDataSource();
-    const userRepository = dataSource.getRepository(User);
+    const userRepository = dataSource.getRepository(Users);
     const userData = await userRepository.save(cBody);
 
     const result = success(

@@ -1,8 +1,13 @@
 import { DataSource } from 'typeorm';
 
 // import entities
-import { Role } from '../../Entities/Role.class';
-// import { User } from '../../Entities/User.class';
+import { Roles } from '../../Entities/Roles.class';
+import { Users } from '../../Entities/Users.class';
+import { Charges } from '../../Entities/Charges.class';
+import { States } from '../../Entities/States.class';
+import { Clients } from '../../Entities/Clients.class';
+import { Tasks } from '../../Entities/Tasks.class';
+import { Projects } from '../../Entities/Projects.class';
 
 // import entities
 
@@ -29,8 +34,13 @@ export const getDataSource = async (): Promise<DataSource> => {
         synchronize: true,
         logging: false,
         entities: [
-          Role,
-          // User,
+          Charges,
+          Clients,
+          Projects,
+          Roles,
+          States,
+          Tasks,
+          Users,
         ]
       });
       return appDataSourceInstance.initialize();

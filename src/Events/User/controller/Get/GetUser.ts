@@ -10,7 +10,7 @@ import { getDataSource } from '../../../../db/dbconfig/typeormdb';
 import { success } from '../../../../utils/response';
 
 // import Entities
-import { User } from '../../../../Entities/User.class';
+import { Users } from '../../../../Entities/Users.class';
 
 /**
  * Obtiene (GET) la información de la API all
@@ -28,7 +28,7 @@ import { User } from '../../../../Entities/User.class';
 export const getUserAll = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const dataSource = await getDataSource();
-    const userRepository = dataSource.getRepository(User);
+    const userRepository = dataSource.getRepository(Users);
     const users = await userRepository.find({
       where: {
         state: 1,
@@ -69,7 +69,7 @@ export const getUserById = async (req: Request, res: Response, next: NextFunctio
     const { id } = req.params;
 
     const dataSource = await getDataSource();
-    const userRepository = dataSource.getRepository(User);
+    const userRepository = dataSource.getRepository(Users);
     const users = await userRepository.find({
       where: {
         id: Number(id),
@@ -109,7 +109,7 @@ export const getUserById = async (req: Request, res: Response, next: NextFunctio
 export const getUserSelect = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const dataSource = await getDataSource();
-    const userRepository = dataSource.getRepository(User);
+    const userRepository = dataSource.getRepository(Users);
     const users = await userRepository.find({
       where: {
         state: 1,

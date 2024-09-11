@@ -7,6 +7,7 @@ import pingServerRoute from '../Events/PingServer/routes/PingServer';
 import Auth from '../Events/Auth/routes/Auth'; // autenticación
 import token from '../Events/Token/routes/Token'; // Token
 import User from '../Events/User/routes/User'; // User
+import Role from '../Events/Role/routes/Role'; // Role
 
 const router = Router();
 
@@ -17,5 +18,6 @@ router.use(pingServerRoute);
 router.use(Auth);
 router.use(token);
 router.use(User);
+router.use(Role);
 
 export default router;

@@ -10,7 +10,7 @@ import { getDataSource } from '../../../../db/dbconfig/typeormdb';
 import { success } from '../../../../utils/response';
 
 // import Entities
-import { Role } from '../../../../Entities/Role.class';
+import { Roles } from '../../../../Entities/Roles.class';
 
 /**
  * Obtiene (GET) la información de la API all
@@ -28,7 +28,7 @@ import { Role } from '../../../../Entities/Role.class';
 export const getRoleAll = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const dataSource = await getDataSource();
-    const roleRepository = dataSource.getRepository(Role);
+    const roleRepository = dataSource.getRepository(Roles);
     const roles = await roleRepository.find({
       where: {
         state: 1,
@@ -69,7 +69,7 @@ export const getRoleId = async (req: Request, res: Response, next: NextFunction)
     const { id } = req.params;
 
     const dataSource = await getDataSource();
-    const roleRepository = dataSource.getRepository(Role);
+    const roleRepository = dataSource.getRepository(Roles);
     const roles = await roleRepository.find({
       where: {
         id: Number(id),
@@ -107,7 +107,7 @@ export const getRoleId = async (req: Request, res: Response, next: NextFunction)
 export const getRoleSelect = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const dataSource = await getDataSource();
-    const roleRepository = dataSource.getRepository(Role);
+    const roleRepository = dataSource.getRepository(Roles);
     const roles = await roleRepository.find({
       where: {
         state: 1,

@@ -11,7 +11,7 @@ import { success } from '../../../../utils/response';
 import { getDataSource } from '../../../../db/dbconfig/typeormdb';
 
 // import Entities
-import { Role } from '../../../../Entities/Role.class';
+import { Roles } from '../../../../Entities/Roles.class';
 
 /**
    * Obtiene (PUT) la información de la API
@@ -41,7 +41,7 @@ export const DeleteRole = async (req: Request, res: Response, next: NextFunction
 
     // const roleData = Role.getRepository(cBody);
     const dataSource = await getDataSource();
-    const roleRepository = dataSource.getRepository(Role);
+    const roleRepository = dataSource.getRepository(Roles);
     const roleData = await roleRepository.createQueryBuilder().update(cBody).where(
       {
         id,

@@ -1,5 +1,5 @@
 import { Router } from 'express';
-// importacion de middlewares
+// importación de middlewares
 import { check } from 'express-validator';
 import { valTokenAuthUser } from '../../../middlewares/protectedRoutes';
 import { validateField } from '../../../middlewares/validateFiel';
@@ -9,7 +9,7 @@ import {
 } from '../../../helpers/dbValidators';
 
 import {
-// importacion de controladores
+// importación de controladores
   getRoleAll,
   getRoleId,
   SaveRole,
@@ -34,7 +34,6 @@ router.post('/post-role', [
   validateField,
 ], SaveRole);
 router.post('/post-withouttoken-role', [
-  check('name', 'El Usuario no debe ser mayor de 20 caracteres').custom(roleExists).isLength({ max: 20 }),
   validateField,
 ], SaveRoleWithoutToken);
 router.put('/put-role/:id', [
