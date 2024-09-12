@@ -8,6 +8,7 @@ import Auth from '../Events/Auth/routes/Auth'; // autenticación
 import token from '../Events/Token/routes/Token'; // Token
 import User from '../Events/User/routes/User'; // User
 import Role from '../Events/Role/routes/Role'; // Role
+import Charges from '../Events/Charges/routes/Charge';
 
 const router = Router();
 
@@ -19,5 +20,6 @@ router.use(Auth);
 router.use(token);
 router.use(User);
 router.use(Role);
+router.use(Charges);
 
 export default router;
