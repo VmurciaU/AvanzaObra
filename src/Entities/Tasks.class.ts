@@ -3,15 +3,13 @@ import {
   Column,
   CreateDateColumn,
   PrimaryGeneratedColumn,
-  Index,
   JoinColumn,
   ManyToOne,
-  PrimaryColumn,
 } from 'typeorm';
 
 // import types
 import { Users } from './Users.class';
-import { States } from './States.class';
+import { Status } from './Status.class';
 import { Projects } from './Projects.class';
 
 @Entity('tasks', {
@@ -61,8 +59,8 @@ export class Tasks {
 
   // Relación con la entidad States
   @JoinColumn({ name: 'idState', referencedColumnName: 'id' })
-  @ManyToOne(() => States, (state) => state.tasks)
-    states: States;
+  @ManyToOne(() => Status, (state) => state.tasks)
+    states: Status;
 
   // Relación con la entidad Projects
   @JoinColumn({ name: 'idProject', referencedColumnName: 'id' })

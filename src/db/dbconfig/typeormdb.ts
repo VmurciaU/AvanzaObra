@@ -4,7 +4,7 @@ import { DataSource } from 'typeorm';
 import { Roles } from '../../Entities/Roles.class';
 import { Users } from '../../Entities/Users.class';
 import { Charges } from '../../Entities/Charges.class';
-import { States } from '../../Entities/States.class';
+import { Status } from '../../Entities/Status.class';
 import { Clients } from '../../Entities/Clients.class';
 import { Tasks } from '../../Entities/Tasks.class';
 import { Projects } from '../../Entities/Projects.class';
@@ -38,7 +38,7 @@ export const getDataSource = async (): Promise<DataSource> => {
           Clients,
           Projects,
           Roles,
-          States,
+          Status,
           Tasks,
           Users,
         ]

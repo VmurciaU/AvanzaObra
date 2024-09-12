@@ -11,13 +11,13 @@ import {
 // importaciones de identidades
 import { Tasks } from './Tasks.class';
 
-@Entity('states', {
+@Entity('status', {
   orderBy: {
     id: 'ASC',
   },
 })
 
-export class States {
+export class Status {
   @PrimaryGeneratedColumn({ type: 'int' })
     id: number;
 
