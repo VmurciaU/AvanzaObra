@@ -1,7 +1,7 @@
 {
   "name": "@backend/nodejs-avanzaobra",
   "version": "1.0.0",
-  "description": "FVL Typescript Nodejs Express API server",
+  "description": "AvanzaObra Typescript Nodejs Express API server",
   "private": true,
   "author": {
     "name": "Gustavo Zuluaga",
