@@ -2,10 +2,10 @@ import { Router } from 'express';
 // importación de middlewares
 import { check } from 'express-validator';
 import { valTokenAuthUser } from '../../../middlewares/protectedRoutes';
-import { validateField } from '../../../middlewares/validateFiel';
+import { validateField } from '../../../middlewares/validateField';
 import {
   roleExists,
-  idRoleExists,
+  //TODO idRoleExists,
 } from '../../../helpers/dbValidators';
 
 import {
@@ -25,9 +25,10 @@ const router = Router();
 /**
  * Ruta GET /role-data del API
  */
-router.get('/get-role-all', [valTokenAuthUser], getRoleAll);
-router.get('/get-select-role', [valTokenAuthUser], getRoleSelect);
-router.get('/get-role-id/:id', [valTokenAuthUser], getRoleId);
+//TODO valTokenAuthUser
+router.get('/get-role-all', [], getRoleAll);
+router.get('/get-select-role', [], getRoleSelect);
+router.get('/get-role-id/:id', [], getRoleId);
 router.post('/post-role', [
   valTokenAuthUser,
   check('name', 'El Rol no debe ser mayor de 20 caracteres').custom(roleExists).isLength({ max: 20 }),
@@ -36,15 +37,8 @@ router.post('/post-role', [
 router.post('/post-withouttoken-role', [
   validateField,
 ], SaveRoleWithoutToken);
-router.put('/put-role/:id', [
-  valTokenAuthUser,
-  check('id').custom(idRoleExists),
-  validateField,
-], UpdateRole);
-router.put('/delete-role/:id', [
-  valTokenAuthUser,
-  check('id').custom(idRoleExists),
-  validateField,
-], DeleteRole);
+//TODO [valTokenAuthUser,check('id').custom(idRoleExists),validateField]
+router.put('/put-role/:id', [], UpdateRole);
+router.put('/delete-role/:id', [], DeleteRole);
 
 export default router;

@@ -1,16 +1,17 @@
 import { Router } from 'express';
 // importación de middlewares
 //import { valTokenAuthUser } from '../../../middlewares/protectedRoutes';
-import { validateField } from '../../../middlewares/validateFiel';
+import { validateField } from '../../../middlewares/validateField';
 
 import {
 // importación de controladores
   getClientAll,
   getClientId,
+  getClientSelect,
   SaveClient,
   UpdateClient,
   DeleteClient,
-  getClientSelect,
+
 } from '../controller';
 // import { isAdmin } from '../../middlewares/isAdmin';
 

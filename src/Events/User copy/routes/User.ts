@@ -7,8 +7,8 @@ import {
   idUserExists,
 } from '../../../helpers/dbValidators';
 
-import { valTokenAuthUser } from '../../../middlewares/protectedRoutes';
-import { validateField } from '../../../middlewares/validateFiel';
+//TODO import { valTokenAuthUser } from '../../../middlewares/protectedRoutes';
+import { validateField } from '../../../middlewares/validateField';
 
 // importación de controladores
 import {
@@ -26,12 +26,13 @@ const router = Router();
 /**
  * Ruta GET /user-data del API
  */
-router.get('/get-user-all', [valTokenAuthUser], getUserAll);
-router.get('/get-select-user', [valTokenAuthUser], getUserSelect);
-router.get('/get-user-id/:id', [valTokenAuthUser], getUserById);
+//TODO valTokenAuthUser
+router.get('/get-user-all', [], getUserAll);
+router.get('/get-select-user', [], getUserSelect);
+router.get('/get-user-id/:id', [], getUserById);
 router.post('/post-user', [
   check('user', 'El Usuario no debe ser mayor de 20 caracteres').custom(userExists).isLength({ max: 20 }),
-  valTokenAuthUser,
+  //TODO valTokenAuthUser,
   validateField,
 ], SaveUser);
 router.post('/post-withouttoken-user', [
@@ -40,12 +41,12 @@ router.post('/post-withouttoken-user', [
 ], SaveUserWithoutToken);
 router.put('/put-user/:id', [
   check('id').custom(idUserExists),
-  valTokenAuthUser,
+  //TODO valTokenAuthUser,
   validateField,
 ], UpdateUser);
 router.put('/delete-user/:id', [
   check('id').custom(idUserExists),
-  valTokenAuthUser,
+  //TODO valTokenAuthUser,
   validateField,
 ], DeleteUser);
 

@@ -5,35 +5,36 @@ import { validateField } from '../../../middlewares/validateField';
 
 import {
 // importación de controladores
-  getChargeAll,
-  getChargeId,
-  getChargeSelect,
-  SaveCharge,
-  UpdateCharge,
-  DeleteCharge,
+  getTaskAll,
+  getTaskId,
+  getTaskSelect,
+  SaveTask,
+  UpdateTask,
+  DeleteTask,
+
 } from '../controller';
 // import { isAdmin } from '../../middlewares/isAdmin';
 
 const router = Router();
 
 /**
- * Ruta GET /charge-data del API
+ * Ruta GET /client-data del API
  */
-router.get('/get-charge-all', [], getChargeAll);
-router.get('/get-select-charge', [], getChargeSelect);
-router.get('/get-charge-id/:id', [], getChargeId);
-router.post('/post-charge', [
+router.get('/get-task-all', [], getTaskAll);
+router.get('/get-select-task', [], getTaskSelect);
+router.get('/get-task-id/:id', [], getTaskId);
+router.post('/post-task', [
 
   validateField,
-], SaveCharge);
+], SaveTask);
 
-router.put('/put-charge/:id', [
-
-  validateField,
-], UpdateCharge);
-router.put('/delete-charge/:id', [
+router.put('/put-task/:id', [
 
   validateField,
-], DeleteCharge);
+], UpdateTask);
+router.put('/delete-task/:id', [
+
+  validateField,
+], DeleteTask);
 
 export default router;

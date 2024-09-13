@@ -43,6 +43,9 @@ export class Tasks {
   @Column({ length: 255 })
     image: string;
 
+  @Column({ length: 255 })
+    audio: string;
+
   @Column({ default: 1 })
     state: number;
 

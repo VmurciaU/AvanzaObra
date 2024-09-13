@@ -16,7 +16,7 @@ export const validateField = (req: Request, res: Response, next: NextFunction) =
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     const result = error(
-      'API Error FVL',
+      'API Error Validate Field',
       400,
       {
         message: 'Se encontraron errores',

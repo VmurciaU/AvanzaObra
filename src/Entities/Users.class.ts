@@ -2,8 +2,8 @@
 import {
   Entity,
   Column,
-  PrimaryColumn,
-  Index,
+  //PrimaryColumn,
+  //Index,
   CreateDateColumn,
   JoinColumn,
   PrimaryGeneratedColumn,
@@ -54,10 +54,10 @@ export class Users {
     @Column({ default: 1 })
       state: number;
 
-    @Column()   
+    @Column()
       idRole: number;
 
-    @Column()    
+    @Column()
       idCharges: number;
 
     @CreateDateColumn()

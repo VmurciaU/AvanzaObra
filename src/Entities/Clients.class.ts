@@ -29,7 +29,6 @@ export class Clients {
 
     @Column({
       nullable: false,
-      unique: true,
       length: 128,
     })
       typeIdentification: string;

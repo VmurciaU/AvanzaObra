@@ -34,6 +34,7 @@ export const getUserAll = async (req: Request, res: Response, next: NextFunction
         state: 1,
       },
       relations: ['role'],
+      //TODO add relationship with task
     });
 
     const result = success(
@@ -75,7 +76,8 @@ export const getUserById = async (req: Request, res: Response, next: NextFunctio
         id: Number(id),
         state: 1,
       },
-      relations: ['role', 'role.user'],
+      relations: ['role'],
+      //TODO add relationship with task
     });
 
     const result = success(
@@ -114,7 +116,8 @@ export const getUserSelect = async (req: Request, res: Response, next: NextFunct
       where: {
         state: 1,
       },
-      relations: ['role', 'role.user'],
+      relations: ['role'],
+      //TODO add relationship with task
     });
 
     const result = success(

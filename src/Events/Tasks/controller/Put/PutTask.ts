@@ -4,28 +4,14 @@ import {
   Response,
   NextFunction,
 } from 'express';
-import bcryptjs from 'bcryptjs';
 
 // Importaciones útiles
-import { currentDate } from '../../../..//utils/currentDate';
-import { success } from '../../../..//utils/response';
+import { getDataSource } from '../../../../db/dbconfig/typeormdb';
+import { success } from '../../../../utils/response';
+import { currentDate } from '../../../../utils/currentDate';
 
 // import Entities
-import { getDataSource } from '../../../../db/dbconfig/typeormdb';
-import { Users } from '../../../../Entities/Users.class';
-
-/**
- * Crea el hash del password
- *
- * @author Gustavo Zuluaga <zuluagagustavo@correounivalle.edu.co>
- * @version 1.0.0
- */
-export const hashPassword = async (password: string) => {
-  // Random
-  const salt = await bcryptjs.genSalt(Number(process.env.BCRYPT_SALT));
-  const hash = bcryptjs.hashSync(password, salt);
-  return hash;
-};
+import { Tasks } from '../../../../Entities/Tasks.class';
 
 /**
    * Obtiene (PUT) la información de la API
@@ -40,32 +26,20 @@ export const hashPassword = async (password: string) => {
    * @author Gustavo Zuluaga <zuluagagustavo@correounivalle.edu.co>
    * @version 1.0.0
    */
-export const UpdateUser = async (req: Request, res: Response, next: NextFunction) => {
+export const UpdateTask = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { id } = req.params;
-    const { password, idRole, ...body } = req.body;
-
-    // validamos si el password viene para cambio lo encriptamos
-    if (password) {
-      body.password = await hashPassword(password);
-    }
-
-    if (idRole) {
-      // asignamos el rol
-      body.idRole = idRole.id;
-    }
+    const { ...body } = req.body;
 
     // traemos la utilidad para la fechas
-    const { date } = currentDate();
+    const { date } = await currentDate();
     // se realiza una copia del objeto para agregar el pass
     const cBody = { ...body };
-    cBody.password = password;
     cBody.updatedAt = date;
 
-    // const userData = User.getRepository(cBody);
     const dataSource = await getDataSource();
-    const userRepository = dataSource.getRepository(Users);
-    const userData = await userRepository.createQueryBuilder().update(cBody).where(
+    const taskRepository = dataSource.getRepository(Tasks);
+    const taskData = await taskRepository.createQueryBuilder().update(cBody).where(
       {
         id,
       },
@@ -74,10 +48,10 @@ export const UpdateUser = async (req: Request, res: Response, next: NextFunction
       .execute();
 
     const result = success(
-      'API User Update',
+      'API Task Update',
       200,
       {
-        userData,
+        taskData,
       },
     );
     res
