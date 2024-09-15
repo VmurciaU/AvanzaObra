@@ -4,7 +4,7 @@ import { Router } from 'express';
 import homeRoute from '../Events/Home/routes/Home';
 import pingServerRoute from '../Events/PingServer/routes/PingServer';
 
-import Auth from '../Events/Auth/routes/Auth'; // autentication.
+import Auth from '../Events/Auth/routes/Auth'; // autentication
 import token from '../Events/Token/routes/Token'; // Token
 import User from '../Events/Users/routes/Users'; // Users
 import Role from '../Events/Role/routes/Role'; // Role
