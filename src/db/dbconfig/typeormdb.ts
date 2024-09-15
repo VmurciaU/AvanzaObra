@@ -14,7 +14,7 @@ import { Projects } from '../../Entities/Projects.class';
 let appDataSourceInstance: DataSource;
 
 /**
- * Función encarga de realizar conexión con la BD por medio de TypeORM
+ * Función encarga de realizar conexión con la BD por medio de TypeORM .
  *
  * @author Gustavo Zuluaga <zuluagagustavo@correounivalle.edu.co>
  * @version 1.0.0
@@ -49,6 +49,6 @@ export const getDataSource = async (): Promise<DataSource> => {
   } catch (err) {
     // eslint-disable-next-line no-console
     console.log('Without connection DB', err);
-    throw new Error(err);
+    throw new Error(err); 
   }
 };
