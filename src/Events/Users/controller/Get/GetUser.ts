@@ -39,13 +39,13 @@ export const getUserAll = async (req: Request, res: Response, next: NextFunction
 
     const result = success(
       'API User All',
-      200,
+      201,
       {
         users,
       },
     );
     res
-      .status(200)
+      .status(201)
       .json(result);
   } catch (err) {
     next(err);

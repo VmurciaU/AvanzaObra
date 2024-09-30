@@ -12,6 +12,7 @@ import { success } from '../../../../utils/response';
 
 // import Entities
 import { Roles } from '../../../../Entities/Roles.class';
+import { CreateDateColumn } from 'typeorm';
 
 /**
    * Obtiene (POST) la información de la API
@@ -44,7 +45,7 @@ export const SaveRole = async (req: Request, res: Response, next: NextFunction) 
     const roleData = await roleRepository.save(cBody);
 
     const result = success(
-      'API Role All',
+      'API Role Save',
       201,
       {
         roleData,

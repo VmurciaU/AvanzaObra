@@ -58,7 +58,6 @@ export const SaveUser = async (req: Request, res: Response, next: NextFunction) 
     cBody.createdAt = date;
     cBody.updatedAt = date;
 
-    // const userData = User.getRepository(cBody);
     const dataSource = await getDataSource();
     const userRepository = dataSource.getRepository(Users);
     const userData = await userRepository.save(cBody);

@@ -2,8 +2,6 @@
 import {
   Entity,
   Column,
-  //PrimaryColumn,
-  //Index,
   CreateDateColumn,
   JoinColumn,
   PrimaryGeneratedColumn,
