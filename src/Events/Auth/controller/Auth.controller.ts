@@ -28,12 +28,14 @@ export const doLoginUser = (req: Request, res: Response, next: NextFunction) => 
       if (error || !user) {
         next(error);
       } else {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        const { password, ...userData } = user;
         const token = await createToken(user);
         const result = success(
           'Login - OK',
           200,
           {
-            user,
+            userData,
             token,
           },
         );

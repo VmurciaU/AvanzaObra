@@ -30,9 +30,6 @@ export const getChargeAll = async (req: Request, res: Response, next: NextFuncti
     const dataSource = await getDataSource();
     const chargeRepository = dataSource.getRepository(Charges);
     const charges = await chargeRepository.find({
-      where: {
-        state: 1,
-      },
       relations: ['user'],
     });
 

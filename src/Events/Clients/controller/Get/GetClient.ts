@@ -30,9 +30,6 @@ export const getClientAll = async (req: Request, res: Response, next: NextFuncti
     const dataSource = await getDataSource();
     const clientRepository = dataSource.getRepository(Clients);
     const clients = await clientRepository.find({
-      where: {
-        state: 1,
-      },
       relations: ['project'],
     });
 

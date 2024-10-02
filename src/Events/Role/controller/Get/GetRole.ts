@@ -30,9 +30,6 @@ export const getRoleAll = async (req: Request, res: Response, next: NextFunction
     const dataSource = await getDataSource();
     const roleRepository = dataSource.getRepository(Roles);
     const roles = await roleRepository.find({
-      where: {
-        state: 1,
-      },
       relations: ['user'],
     });
 

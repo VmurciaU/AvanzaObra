@@ -30,9 +30,6 @@ export const getTaskAll = async (req: Request, res: Response, next: NextFunction
     const dataSource = await getDataSource();
     const taskRepository = dataSource.getRepository(Tasks);
     const taskdata = await taskRepository.find({
-      where: {
-        state: 1,
-      },
       relations: ['user', 'projects', 'states'],
     });
 

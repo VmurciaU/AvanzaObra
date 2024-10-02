@@ -30,9 +30,6 @@ export const getStatusAll = async (req: Request, res: Response, next: NextFuncti
     const dataSource = await getDataSource();
     const statusRepository = dataSource.getRepository(Status);
     const status = await statusRepository.find({
-      where: {
-        state: 1,
-      },
       relations: ['tasks'],
     });
 
