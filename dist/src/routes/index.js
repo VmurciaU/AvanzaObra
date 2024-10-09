@@ -1,0 +1,31 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const Home_1 = __importDefault(require("../Events/Home/routes/Home"));
+const PingServer_1 = __importDefault(require("../Events/PingServer/routes/PingServer"));
+const Auth_1 = __importDefault(require("../Events/Auth/routes/Auth"));
+const Token_1 = __importDefault(require("../Events/Token/routes/Token"));
+const Users_1 = __importDefault(require("../Events/Users/routes/Users"));
+const Role_1 = __importDefault(require("../Events/Role/routes/Role"));
+const Charge_1 = __importDefault(require("../Events/Charges/routes/Charge"));
+const Client_1 = __importDefault(require("../Events/Clients/routes/Client"));
+const Status_1 = __importDefault(require("../Events/Status/routes/Status"));
+const Projects_1 = __importDefault(require("../Events/Projects/routes/Projects"));
+const Task_1 = __importDefault(require("../Events/Tasks/routes/Task"));
+const router = (0, express_1.Router)();
+router.use(Home_1.default);
+router.use(PingServer_1.default);
+router.use(Auth_1.default);
+router.use(Token_1.default);
+router.use(Users_1.default);
+router.use(Role_1.default);
+router.use(Charge_1.default);
+router.use(Client_1.default);
+router.use(Status_1.default);
+router.use(Projects_1.default);
+router.use(Task_1.default);
+exports.default = router;
+//# sourceMappingURL=index.js.map

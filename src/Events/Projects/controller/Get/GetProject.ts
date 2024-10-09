@@ -30,7 +30,7 @@ export const getProjectAll = async (req: Request, res: Response, next: NextFunct
     const dataSource = await getDataSource();
     const projectRepository = dataSource.getRepository(Projects);
     const projectdata = await projectRepository.find({
-      relations: ['tasks'],
+      relations: ['tasks', 'client'],
     });
 
     const result = success(
@@ -72,7 +72,7 @@ export const getProjectById = async (req: Request, res: Response, next: NextFunc
         id: Number(id),
         state: 1,
       },
-      relations: ['tasks'],
+      relations: ['tasks', 'client'],
     });
 
     const result = success(
@@ -111,7 +111,7 @@ export const getProjectSelect = async (req: Request, res: Response, next: NextFu
       where: {
         state: 1,
       },
-      relations: ['tasks'],
+      relations: ['tasks', 'client'],
     });
 
     const result = success(
