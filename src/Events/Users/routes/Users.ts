@@ -27,7 +27,7 @@ const router = Router();
  * Ruta GET /user-data del API
  */
 //TODO valTokenAuthUser
-router.get('/ ', [], getUserAll);
+router.get('/get-user-all', [], getUserAll);
 router.get('/get-select-user', [], getUserSelect);
 router.get('/get-user-id/:id', [], getUserById);
 router.post('/post-user', [

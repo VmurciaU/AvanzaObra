@@ -30,8 +30,7 @@ export const getUserAll = async (req: Request, res: Response, next: NextFunction
     const dataSource = await getDataSource();
     const userRepository = dataSource.getRepository(Users);
     const users = await userRepository.find({
-      relations: ['role'],
-      //TODO add relationship with task
+      relations: ['role', 'charges', 'tasks'],     //TODO add relationship with task
     });
 
     const result = success(
